@@ -1,0 +1,274 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Clients | Growvia Tech</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #081629;
+            color: white;
+            line-height: 1.7;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #0c1d34;
+            border-bottom: 1px solid #263a55;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #4385ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #70a4ff;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 85px 8%;
+            background: linear-gradient(140deg, #081629, #163356);
+        }
+
+        .eyebrow {
+            color: #70a4ff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h1 span,
+        h2 span {
+            color: #4385ff;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #bdcbe0;
+        }
+
+        .clients-section {
+            background: #f5f8fc;
+            color: #12223a;
+            padding: 75px 8%;
+            min-height: 330px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #65748a;
+            max-width: 650px;
+            margin: 0 auto 35px;
+        }
+
+        .empty-state {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 38px 25px;
+            text-align: center;
+            background: white;
+            border: 1px dashed #b8c7da;
+            border-radius: 15px;
+        }
+
+        .empty-icon {
+            font-size: 42px;
+            color: #3478f6;
+            margin-bottom: 12px;
+        }
+
+        .empty-state h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: #65748a;
+            font-size: 14px;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 70px 8%;
+            background: #10233e;
+        }
+
+        .contact h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            color: #bdcbe0;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #3478f6;
+            color: white;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #050d19;
+            color: #a9b8cc;
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #8db4ff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="index.html">
+        Growvia <span>Tech</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a class="active" href="clients.html">Clients</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="eyebrow">OUR CLIENTS</div>
+
+        <h1>Relationships Built on<br><span>Trust and Growth.</span></h1>
+
+        <p>
+            This page will introduce the businesses that work with
+            Growvia Tech, with their permission and accurate details.
+        </p>
+    </section>
+
+    <section class="clients-section">
+        <h2 class="section-title">Our <span>Clients</span></h2>
+
+        <p class="section-description">
+            Client profiles, business information, logos, and social
+            media links will appear here when real client details are added.
+        </p>
+
+        <div class="empty-state">
+            <div class="empty-icon">◇</div>
+
+            <h3>Client profiles will appear here</h3>
+
+            <p>
+                No client profiles have been added yet.
+                We will display genuine client information only,
+                with permission to use their details and logos.
+            </p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="eyebrow">WORK WITH US</div>
+
+        <h2>Let's Grow <span>Together.</span></h2>
+
+        <p>Interested in working with Growvia Tech?</p>
+
+        <a class="button"
+           href="https://wa.me/917397166373"
+           target="_blank"
+           rel="noopener noreferrer">
+            Contact Us on WhatsApp ↗
+        </a>
+    </section>
+</main>
+
+<footer>
+    <span>© <span id="year"></span> Growvia Tech. All rights reserved.</span>
+    <a href="index.html">Back to Home</a>
+</footer>
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
+```
