@@ -7,386 +7,531 @@
   <title>Admin Dashboard | Growvia Tech</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      min-height: 100vh;
+      margin: 0;
       font-family: Arial, sans-serif;
-      color: #f8fafc;
       background: #08111f;
+      color: #f8fafc;
       line-height: 1.6;
     }
-
     header {
-      padding: 20px 7%;
+      padding: 18px 5%;
       background: #0b1628;
       border-bottom: 1px solid #263b56;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 12px;
     }
-
-    .logo {
-      color: #60a5fa;
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-    header a {
-      color: #bfdbfe;
-      text-decoration: none;
-    }
-
-    main {
-      width: min(720px, 92%);
-      margin: 55px auto;
-    }
-
+    a { color: #93c5fd; text-decoration: none; }
+    .logo { font-size: 22px; font-weight: bold; }
+    main { width: min(1100px, 94%); margin: 28px auto; }
     .panel {
-      padding: 30px;
+      padding: 22px;
       background: #0e1b2d;
       border: 1px solid #263b56;
-      border-radius: 18px;
-      margin-bottom: 22px;
+      border-radius: 14px;
+      margin-bottom: 20px;
     }
-
-    h1, h2 {
-      margin-bottom: 12px;
-    }
-
-    .muted {
-      color: #a9b8cb;
-      margin-bottom: 22px;
-    }
-
-    label {
-      display: block;
-      margin: 16px 0 7px;
-      color: #dbeafe;
-    }
-
-    input, textarea {
-      display: block;
+    h1, h2, h3 { margin-top: 0; }
+    .muted { color: #a9b8cb; }
+    label { display: block; margin: 13px 0 6px; }
+    input, textarea, select {
       width: 100%;
-      padding: 13px;
-      border-radius: 9px;
-      border: 1px solid #334861;
+      padding: 12px;
       background: #08111f;
       color: white;
+      border: 1px solid #334861;
+      border-radius: 8px;
       font: inherit;
     }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
+    textarea { min-height: 90px; resize: vertical; }
     button {
-      padding: 12px 18px;
-      margin-top: 18px;
+      padding: 11px 15px;
       border: 0;
-      border-radius: 9px;
+      border-radius: 8px;
       background: #2563eb;
       color: white;
       font-weight: bold;
       cursor: pointer;
+      margin: 6px 5px 0 0;
     }
-
-    button:hover {
-      background: #3b82f6;
-    }
-
-    .secondary {
-      background: #334155;
-    }
-
-    .danger {
-      background: #991b1b;
-    }
-
+    button:hover { background: #3b82f6; }
+    .secondary { background: #334155; }
+    .danger { background: #991b1b; }
+    .hidden { display: none !important; }
     .status {
-      padding: 12px;
-      border-radius: 9px;
       background: #12233a;
-      color: #bfdbfe;
+      padding: 12px;
+      border-radius: 8px;
       overflow-wrap: anywhere;
-      margin-top: 15px;
+      margin-top: 14px;
     }
-
-    .hidden {
-      display: none;
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
     }
-
+    .nav button { margin: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .item {
+      background: #08111f;
+      border: 1px solid #334861;
+      border-radius: 10px;
+      padding: 15px;
+      overflow-wrap: anywhere;
+    }
+    .item img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
     footer {
-      padding: 25px;
       text-align: center;
       color: #94a3b8;
+      padding: 25px;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <a class="logo" href="index.html">Growvia Tech</a>
+<header>
+  <a class="logo" href="index.html">Growvia Tech Admin</a>
+  <div>
     <a href="index.html">View Website</a>
-  </header>
+    <button id="logout" class="danger hidden" type="button">
+      Sign Out
+    </button>
+  </div>
+</header>
 
-  <main>
-    <section class="panel" id="loginPanel">
-      <h1>Admin Access</h1>
-      <p class="muted">
-        Sign in with your authorized administrator account.
-      </p>
+<main>
+  <section id="loginPanel" class="panel">
+    <h1>Admin Login</h1>
+    <p class="muted">Sign in with your authorized administrator account.</p>
 
-      <form id="loginForm">
-        <label for="email">Admin Email</label>
-        <input
-          id="email"
-          type="email"
-          autocomplete="username"
-          required
-        >
+    <form id="loginForm">
+      <label for="email">Admin Email</label>
+      <input id="email" type="email" autocomplete="username" required>
 
-        <label for="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          autocomplete="current-password"
-          required
-        >
+      <label for="password">Password</label>
+      <input id="password" type="password"
+             autocomplete="current-password" required>
 
-        <button type="submit">Sign In</button>
-      </form>
+      <button type="submit">Sign In</button>
+    </form>
+    <p id="loginStatus" class="status" role="status">
+      Please sign in.
+    </p>
+  </section>
 
-      <p id="loginStatus" class="status" role="status">
-        Sign in to verify administrator access.
-      </p>
-    </section>
-
-    <section class="panel hidden" id="dashboard">
+  <section id="dashboard" class="hidden">
+    <div class="panel">
       <h1>Admin Dashboard</h1>
-      <p class="muted">
-        Administrator access verified.
-      </p>
-
+      <p class="muted">Manage your website content from here.</p>
       <p id="adminEmail" class="status"></p>
+      <p id="status" class="status" role="status">
+        Admin dashboard ready.
+      </p>
+    </div>
 
-      <h2 style="margin-top: 25px;">Private Admin Note</h2>
-      <p class="muted">
-        Save a private note to your protected Firebase database.
-        This does not publish content on the public website.
+    <div class="nav" id="navigation">
+      <button data-section="clients">Clients</button>
+      <button data-section="team">Team</button>
+      <button data-section="banners">Banners</button>
+      <button data-section="services">Services</button>
+      <button data-section="portfolio">Portfolio</button>
+      <button data-section="siteSettings">Website Settings</button>
+      <button data-section="enquiries">Enquiries</button>
+    </div>
+
+    <section class="panel">
+      <h2 id="sectionTitle">Clients</h2>
+      <p class="muted" id="sectionHelp">
+        Add and manage real website content.
       </p>
 
-      <form id="noteForm">
-        <label for="note">Admin Note</label>
-        <textarea
-          id="note"
-          maxlength="1000"
-          placeholder="Write a private note..."
-          required
-        ></textarea>
+      <form id="contentForm">
+        <input type="hidden" id="recordId">
 
-        <button type="submit">Save Note</button>
+        <label for="title">Name / Title</label>
+        <input id="title" maxlength="150" required>
+
+        <label for="description">Description / Details</label>
+        <textarea id="description" maxlength="5000"></textarea>
+
+        <label for="role">Role / Subtitle</label>
+        <input id="role" maxlength="200">
+
+        <label for="imageUrl">Image URL</label>
+        <input id="imageUrl" type="url"
+               placeholder="https://example.com/image.jpg">
+
+        <label for="imageFile">Or upload an image</label>
+        <input id="imageFile" type="file"
+               accept="image/jpeg,image/png,image/webp">
+
+        <label for="link">Website / Project / Button URL</label>
+        <input id="link" type="url"
+               placeholder="https://example.com">
+
+        <button type="submit" id="saveButton">Save Record</button>
+        <button type="button" id="cancelEdit" class="secondary">
+          Clear Form
+        </button>
       </form>
-
-      <p id="dashboardStatus" class="status" role="status">
-        Connected admin area.
-      </p>
-
-      <button type="button" class="secondary" id="loadNote">
-        Load Saved Note
-      </button>
-
-      <button type="button" class="danger" id="logout">
-        Sign Out
-      </button>
     </section>
-  </main>
 
-  <footer>
-    Growvia Tech Admin Area
-  </footer>
+    <section class="panel">
+      <h2>Saved Records</h2>
+      <div id="records" class="grid"></div>
+    </section>
+  </section>
+</main>
 
-  <script type="module">
-    import { initializeApp } from
-      "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+<footer>Growvia Tech | Admin Area</footer>
 
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut
-    } from
-      "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+<script type="module">
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
-    import {
-      getDatabase,
-      ref,
-      get,
-      set
-    } from
-      "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from
+    "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAsX-WxUqkb4v_Ely1Z7CSFrMRnXphZ2qs",
-      authDomain: "growvia-tech.firebaseapp.com",
-      databaseURL: "https://growvia-tech-default-rtdb.firebaseio.com",
-      projectId: "growvia-tech",
-      storageBucket: "growvia-tech.firebasestorage.app",
-      messagingSenderId: "507702013919",
-      appId: "1:507702013919:web:d8b1904d53b56f16021e6a",
-      measurementId: "G-P4X4Z1S3LK"
-    };
+  import {
+    getDatabase,
+    ref,
+    get,
+    set,
+    push,
+    update,
+    remove
+  } from
+    "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
-    // Replace this with your real Firebase Authentication UID.
-    const ADMIN_UID = "SHAxUS8IA7ZD4YHP3gid58kV7yP2";
+  import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL
+  } from
+    "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getDatabase(app);
+  const firebaseConfig = {
+    apiKey: "AIzaSyAsX-WxUqkb4v_Ely1Z7CSFrMRnXphZ2qs",
+    authDomain: "growvia-tech.firebaseapp.com",
+    databaseURL: "https://growvia-tech-default-rtdb.firebaseio.com",
+    projectId: "growvia-tech",
+    storageBucket: "growvia-tech.firebasestorage.app",
+    messagingSenderId: "507702013919",
+    appId: "1:507702013919:web:d8b1904d53b56f16021e6a",
+    measurementId: "G-P4X4Z1S3LK"
+  };
 
-    const loginPanel = document.getElementById("loginPanel");
-    const dashboard = document.getElementById("dashboard");
-    const loginStatus = document.getElementById("loginStatus");
-    const dashboardStatus = document.getElementById("dashboardStatus");
+  // Only this Firebase Authentication UID is authorized.
+  const ADMIN_UID = "SHAxUS8IA7ZD4YHP3gid58kV7yP2";
 
-    let checkingAccess = false;
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+  const storage = getStorage(app);
 
-    function showLogin(message) {
-      loginPanel.classList.remove("hidden");
-      dashboard.classList.add("hidden");
-      loginStatus.textContent = message;
+  const $ = id => document.getElementById(id);
+
+  const sections = {
+    clients: "Clients",
+    team: "Team",
+    banners: "Banners",
+    services: "Services",
+    portfolio: "Portfolio",
+    siteSettings: "Website Settings",
+    enquiries: "Enquiries"
+  };
+
+  let currentSection = "clients";
+  let loading = false;
+
+  function message(text) {
+    $("status").textContent = text;
+  }
+
+  function escapeHTML(value = "") {
+    return String(value).replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+  }
+
+  function showLogin(text) {
+    $("loginPanel").classList.remove("hidden");
+    $("dashboard").classList.add("hidden");
+    $("logout").classList.add("hidden");
+    $("loginStatus").textContent = text;
+  }
+
+  function showDashboard(user) {
+    $("loginPanel").classList.add("hidden");
+    $("dashboard").classList.remove("hidden");
+    $("logout").classList.remove("hidden");
+    $("adminEmail").textContent = "Signed in as: " + user.email;
+  }
+
+  function recordPath(id = "") {
+    return id
+      ? `${currentSection}/${id}`
+      : currentSection;
+  }
+
+  function clearForm() {
+    $("contentForm").reset();
+    $("recordId").value = "";
+    $("saveButton").textContent = "Save Record";
+  }
+
+  async function uploadImage(file) {
+    if (!file) return $("imageUrl").value.trim();
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      throw new Error("Choose a JPG, PNG or WebP image.");
     }
 
-    function showDashboard(user) {
-      loginPanel.classList.add("hidden");
-      dashboard.classList.remove("hidden");
-      document.getElementById("adminEmail").textContent =
-        "Signed in as: " + (user.email || "Authorized administrator");
+    if (file.size > 5 * 1024 * 1024) {
+      throw new Error("Image size must be 5 MB or less.");
     }
 
-    document.getElementById("loginForm").addEventListener(
-      "submit",
-      async (event) => {
-        event.preventDefault();
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const path = `adminUploads/${auth.currentUser.uid}/${Date.now()}_${safeName}`;
+    const fileRef = storageRef(storage, path);
 
-        loginStatus.textContent = "Verifying account...";
+    await uploadBytes(fileRef, file, { contentType: file.type });
+    return await getDownloadURL(fileRef);
+  }
 
-        try {
-          await signInWithEmailAndPassword(
-            auth,
-            document.getElementById("email").value.trim(),
-            document.getElementById("password").value
-          );
-        } catch (error) {
-          loginStatus.textContent =
-            "Sign-in failed. Check your credentials and Firebase Authentication settings.";
-        }
-      }
-    );
+  async function loadRecords() {
+    if (!auth.currentUser || auth.currentUser.uid !== ADMIN_UID) return;
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        showLogin("Sign in to verify administrator access.");
+    $("records").innerHTML = "";
+    clearForm();
+
+    try {
+      const snapshot = await get(ref(db, currentSection));
+
+      if (!snapshot.exists()) {
+        $("records").innerHTML =
+          '<p class="muted">No records have been added yet.</p>';
         return;
       }
 
-      if (ADMIN_UID === "REPLACE_WITH_YOUR_ADMIN_UID" ||
-          user.uid !== ADMIN_UID) {
-        await signOut(auth);
-        showLogin("Access denied. This account is not the authorized admin.");
-        return;
+      const data = snapshot.val();
+
+      for (const [id, item] of Object.entries(data)) {
+        if (!item || typeof item !== "object") continue;
+
+        const card = document.createElement("article");
+        card.className = "item";
+
+        const image = item.imageUrl
+          ? `<img src="${escapeHTML(item.imageUrl)}" alt="" loading="lazy">`
+          : "";
+
+        const editButton = currentSection === "enquiries"
+          ? ""
+          : `<button type="button" data-edit="${escapeHTML(id)}">Edit</button>`;
+
+        const deleteButton = currentSection === "enquiries"
+          ? ""
+          : `<button type="button" class="danger" data-delete="${escapeHTML(id)}">Delete</button>`;
+
+        card.innerHTML = `
+          ${image}
+          <h3>${escapeHTML(item.title || item.name || "Untitled")}</h3>
+          <p>${escapeHTML(item.role || "")}</p>
+          <p>${escapeHTML(item.description || item.message || "")}</p>
+          <p class="muted">${escapeHTML(item.email || "")}</p>
+          ${editButton}
+          ${deleteButton}
+        `;
+
+        $("records").appendChild(card);
       }
 
-      checkingAccess = true;
-      showDashboard(user);
-      dashboardStatus.textContent =
-        "Admin identity verified. Checking database access...";
+      $("records").querySelectorAll("[data-edit]").forEach(button => {
+        button.addEventListener("click", () => editRecord(button.dataset.edit, data));
+      });
 
-      try {
-        await get(ref(db, "adminNote"));
-        dashboardStatus.textContent =
-          "Admin identity verified and database access confirmed.";
-      } catch (error) {
-        dashboardStatus.textContent =
-          "Admin identity verified, but database access is not configured. Check Firebase Database Rules.";
-      } finally {
-        checkingAccess = false;
+      $("records").querySelectorAll("[data-delete]").forEach(button => {
+        button.addEventListener("click", () => deleteRecord(button.dataset.delete));
+      });
+
+    } catch (error) {
+      message("Could not load records. Check your Firebase Database Rules.");
+      console.error(error);
+    }
+  }
+
+  function editRecord(id, data) {
+    const item = data[id];
+    if (!item) return;
+
+    $("recordId").value = id;
+    $("title").value = item.title || item.name || "";
+    $("description").value = item.description || item.message || "";
+    $("role").value = item.role || "";
+    $("imageUrl").value = item.imageUrl || "";
+    $("link").value = item.link || "";
+    $("imageFile").value = "";
+    $("saveButton").textContent = "Update Record";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    message("Editing record. Make your changes and save.");
+  }
+
+  async function deleteRecord(id) {
+    if (!confirm("Delete this record permanently?")) return;
+
+    try {
+      await remove(ref(db, recordPath(id)));
+      message("Record deleted.");
+      await loadRecords();
+    } catch (error) {
+      message("Delete failed. Check Firebase Database Rules.");
+      console.error(error);
+    }
+  }
+
+  $("loginForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    $("loginStatus").textContent = "Signing in...";
+
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        $("email").value.trim(),
+        $("password").value
+      );
+    } catch (error) {
+      $("loginStatus").textContent =
+        "Login failed. Check your email, password and Firebase Authentication settings.";
+      console.error(error);
+    }
+  });
+
+  onAuthStateChanged(auth, async user => {
+    if (!user) {
+      showLogin("Please sign in with your administrator account.");
+      return;
+    }
+
+    if (user.uid !== ADMIN_UID) {
+      await signOut(auth);
+      showLogin("Access denied. This account is not the authorized admin.");
+      return;
+    }
+
+    showDashboard(user);
+    message("Admin verified. Loading records...");
+    await loadRecords();
+    message("Admin dashboard connected.");
+  });
+
+  $("navigation").addEventListener("click", async event => {
+    const button = event.target.closest("[data-section]");
+    if (!button) return;
+
+    currentSection = button.dataset.section;
+    $("sectionTitle").textContent = sections[currentSection];
+    $("sectionHelp").textContent =
+      currentSection === "enquiries"
+        ? "View enquiry records submitted to the database."
+        : "Add, edit or delete records stored in Firebase.";
+
+    const readOnly = currentSection === "enquiries";
+    $("contentForm").classList.toggle("hidden", readOnly);
+    $("records").innerHTML = "";
+    await loadRecords();
+  });
+
+  $("contentForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    if (!auth.currentUser || auth.currentUser.uid !== ADMIN_UID) {
+      message("Administrator access required.");
+      return;
+    }
+
+    if (currentSection === "enquiries") {
+      message("Enquiries are read-only in this dashboard.");
+      return;
+    }
+
+    if (loading) return;
+    loading = true;
+    $("saveButton").disabled = true;
+
+    try {
+      message("Saving record...");
+
+      const id = $("recordId").value;
+      const imageUrl = await uploadImage($("imageFile").files[0]);
+
+      const record = {
+        title: $("title").value.trim(),
+        description: $("description").value.trim(),
+        role: $("role").value.trim(),
+        imageUrl,
+        link: $("link").value.trim(),
+        updatedAt: Date.now()
+      };
+
+      if (!record.title) throw new Error("Enter a name or title.");
+
+      if (id) {
+        await update(ref(db, recordPath(id)), record);
+        message("Record updated successfully.");
+      } else {
+        const newRef = push(ref(db, currentSection));
+        await set(newRef, {
+          ...record,
+          createdAt: Date.now()
+        });
+        message("Record added successfully.");
       }
-    });
 
-    document.getElementById("noteForm").addEventListener(
-      "submit",
-      async (event) => {
-        event.preventDefault();
+      clearForm();
+      await loadRecords();
+    } catch (error) {
+      message(error.message || "Save failed. Check Database and Storage Rules.");
+      console.error(error);
+    } finally {
+      loading = false;
+      $("saveButton").disabled = false;
+    }
+  });
 
-        const user = auth.currentUser;
-        if (!user || user.uid !== ADMIN_UID || checkingAccess) {
-          dashboardStatus.textContent = "Admin access is required.";
-          return;
-        }
+  $("cancelEdit").addEventListener("click", clearForm);
 
-        const note = document.getElementById("note").value.trim();
-
-        if (!note) {
-          dashboardStatus.textContent = "Enter a note first.";
-          return;
-        }
-
-        try {
-          await set(ref(db, "adminNote"), {
-            text: note,
-            updatedAt: Date.now()
-          });
-
-          dashboardStatus.textContent = "Private note saved successfully.";
-        } catch (error) {
-          dashboardStatus.textContent =
-            "Could not save. Check your Firebase Database Rules.";
-        }
-      }
-    );
-
-    document.getElementById("loadNote").addEventListener(
-      "click",
-      async () => {
-        const user = auth.currentUser;
-
-        if (!user || user.uid !== ADMIN_UID) {
-          dashboardStatus.textContent = "Admin access is required.";
-          return;
-        }
-
-        try {
-          const snapshot = await get(ref(db, "adminNote"));
-
-          if (snapshot.exists()) {
-            document.getElementById("note").value =
-              snapshot.val().text || "";
-            dashboardStatus.textContent = "Saved note loaded.";
-          } else {
-            dashboardStatus.textContent = "No saved note exists yet.";
-          }
-        } catch (error) {
-          dashboardStatus.textContent =
-            "Could not load the note. Check your Database Rules.";
-        }
-      }
-    );
-
-    document.getElementById("logout").addEventListener(
-      "click",
-      async () => {
-        await signOut(auth);
-        showLogin("You have signed out.");
-      }
-    );
-  </script>
+  $("logout").addEventListener("click", async () => {
+    await signOut(auth);
+    showLogin("You have signed out.");
+  });
+</script>
 </body>
 </html>
