@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the team behind Growvia Tech.">
+  <title>Our Team | Growvia Tech</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #08111f;
+      color: #f8fafc;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .navbar {
+      min-height: 76px;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: #0b1628;
+      border-bottom: 1px solid #1e3049;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: #60a5fa;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 7% 75px;
+      background:
+        radial-gradient(ellipse at top, #173b68 0%, #08111f 65%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #93c5fd;
+      background: #132d4d;
+      border: 1px solid #285184;
+      border-radius: 30px;
+      padding: 7px 15px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .highlight {
+      color: #60a5fa;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #b7c5d8;
+      font-size: 17px;
+    }
+
+    .section {
+      padding: 70px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: #94a3b8;
+      max-width: 620px;
+      margin: auto;
+    }
+
+    .team-panel {
+      max-width: 850px;
+      margin: auto;
+      padding: 45px 30px;
+      text-align: center;
+      border: 1px solid #263b56;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #12233a, #0c1727);
+    }
+
+    .team-icon {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: #1d3a5f;
+      color: #93c5fd;
+      font-size: 34px;
+    }
+
+    .team-panel h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .team-panel p {
+      color: #a9b8cb;
+      max-width: 570px;
+      margin: 0 auto 24px;
+    }
+
+    .contact-button {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .contact-button:hover {
+      background: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .value-card {
+      padding: 25px;
+      background: #0e1b2d;
+      border: 1px solid #20334b;
+      border-radius: 16px;
+    }
+
+    .value-card h3 {
+      color: #93c5fd;
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      color: #a9b8cb;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 7%;
+      border-top: 1px solid #203047;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #60a5fa;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        justify-content: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .team-panel {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">Growvia Tech</a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="clients.html">Clients</a>
+      <a href="team.html">Team</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow">THE PEOPLE BEHIND THE WORK</span>
+
+      <h1>
+        Meet Our <span class="highlight">Team</span>
+      </h1>
+
+      <p>
+        Great digital experiences start with clear ideas,
+        creative thinking, and a commitment to quality.
+        This page is where the Growvia Tech team will be introduced.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Our Team Members</h2>
+        <p>
+          Team profiles can be added here when the actual
+          member details and approved photographs are ready.
+        </p>
+      </div>
+
+      <div class="team-panel">
+        <div class="team-icon" aria-hidden="true">&#9733;</div>
+
+        <h3>Building Our Team</h3>
+
+        <p>
+          We are preparing this space for our actual team
+          members, roles, and professional introductions.
+          No sample profiles or invented team details are displayed.
+        </p>
+
+        <a
+          class="contact-button"
+          href="https://wa.me/917397166373?text=Hello%20Growvia%20Tech"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contact Growvia Tech
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>What We Value</h2>
+        <p>
+          The principles that guide our approach to digital work.
+        </p>
+      </div>
+
+      <div class="values">
+        <article class="value-card">
+          <h3>Quality</h3>
+          <p>
+            Focus on clean design, useful features,
+            and careful attention to detail.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <h3>Creativity</h3>
+          <p>
+            Explore thoughtful ideas that help businesses
+            present themselves online.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <h3>Communication</h3>
+          <p>
+            Keep project discussions clear and understand
+            customer requirements before starting work.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; <span id="year"></span> Growvia Tech.
+      All rights reserved.
+    </p>
+    <p>
+      <a href="https://wa.me/917397166373">WhatsApp Contact</a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
