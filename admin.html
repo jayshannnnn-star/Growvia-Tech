@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Growvia Tech</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: #f8fafc;
+      background: #08111f;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 7%;
+      background: #0b1628;
+      border-bottom: 1px solid #263b56;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: #60a5fa;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    header a {
+      color: #bfdbfe;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(720px, 92%);
+      margin: 55px auto;
+    }
+
+    .panel {
+      padding: 30px;
+      background: #0e1b2d;
+      border: 1px solid #263b56;
+      border-radius: 18px;
+      margin-bottom: 22px;
+    }
+
+    h1, h2 {
+      margin-bottom: 12px;
+    }
+
+    .muted {
+      color: #a9b8cb;
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 7px;
+      color: #dbeafe;
+    }
+
+    input, textarea {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 9px;
+      border: 1px solid #334861;
+      background: #08111f;
+      color: white;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 18px;
+      margin-top: 18px;
+      border: 0;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #3b82f6;
+    }
+
+    .secondary {
+      background: #334155;
+    }
+
+    .danger {
+      background: #991b1b;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 9px;
+      background: #12233a;
+      color: #bfdbfe;
+      overflow-wrap: anywhere;
+      margin-top: 15px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">Growvia Tech</a>
+    <a href="index.html">View Website</a>
+  </header>
+
+  <main>
+    <section class="panel" id="loginPanel">
+      <h1>Admin Access</h1>
+      <p class="muted">
+        Sign in with your authorized administrator account.
+      </p>
+
+      <form id="loginForm">
+        <label for="email">Admin Email</label>
+        <input
+          id="email"
+          type="email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit">Sign In</button>
+      </form>
+
+      <p id="loginStatus" class="status" role="status">
+        Sign in to verify administrator access.
+      </p>
+    </section>
+
+    <section class="panel hidden" id="dashboard">
+      <h1>Admin Dashboard</h1>
+      <p class="muted">
+        Administrator access verified.
+      </p>
+
+      <p id="adminEmail" class="status"></p>
+
+      <h2 style="margin-top: 25px;">Private Admin Note</h2>
+      <p class="muted">
+        Save a private note to your protected Firebase database.
+        This does not publish content on the public website.
+      </p>
+
+      <form id="noteForm">
+        <label for="note">Admin Note</label>
+        <textarea
+          id="note"
+          maxlength="1000"
+          placeholder="Write a private note..."
+          required
+        ></textarea>
+
+        <button type="submit">Save Note</button>
+      </form>
+
+      <p id="dashboardStatus" class="status" role="status">
+        Connected admin area.
+      </p>
+
+      <button type="button" class="secondary" id="loadNote">
+        Load Saved Note
+      </button>
+
+      <button type="button" class="danger" id="logout">
+        Sign Out
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    Growvia Tech Admin Area
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut
+    } from
+      "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+    import {
+      getDatabase,
+      ref,
+      get,
+      set
+    } from
+      "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsX-WxUqkb4v_Ely1Z7CSFrMRnXphZ2qs",
+      authDomain: "growvia-tech.firebaseapp.com",
+      databaseURL: "https://growvia-tech-default-rtdb.firebaseio.com",
+      projectId: "growvia-tech",
+      storageBucket: "growvia-tech.firebasestorage.app",
+      messagingSenderId: "507702013919",
+      appId: "1:507702013919:web:d8b1904d53b56f16021e6a",
+      measurementId: "G-P4X4Z1S3LK"
+    };
+
+    // Replace this with your real Firebase Authentication UID.
+    const ADMIN_UID = "REPLACE_WITH_YOUR_ADMIN_UID";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    const loginPanel = document.getElementById("loginPanel");
+    const dashboard = document.getElementById("dashboard");
+    const loginStatus = document.getElementById("loginStatus");
+    const dashboardStatus = document.getElementById("dashboardStatus");
+
+    let checkingAccess = false;
+
+    function showLogin(message) {
+      loginPanel.classList.remove("hidden");
+      dashboard.classList.add("hidden");
+      loginStatus.textContent = message;
+    }
+
+    function showDashboard(user) {
+      loginPanel.classList.add("hidden");
+      dashboard.classList.remove("hidden");
+      document.getElementById("adminEmail").textContent =
+        "Signed in as: " + (user.email || "Authorized administrator");
+    }
+
+    document.getElementById("loginForm").addEventListener(
+      "submit",
+      async (event) => {
+        event.preventDefault();
+
+        loginStatus.textContent = "Verifying account...";
+
+        try {
+          await signInWithEmailAndPassword(
+            auth,
+            document.getElementById("email").value.trim(),
+            document.getElementById("password").value
+          );
+        } catch (error) {
+          loginStatus.textContent =
+            "Sign-in failed. Check your credentials and Firebase Authentication settings.";
+        }
+      }
+    );
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        showLogin("Sign in to verify administrator access.");
+        return;
+      }
+
+      if (ADMIN_UID === "REPLACE_WITH_YOUR_ADMIN_UID" ||
+          user.uid !== ADMIN_UID) {
+        await signOut(auth);
+        showLogin("Access denied. This account is not the authorized admin.");
+        return;
+      }
+
+      checkingAccess = true;
+      showDashboard(user);
+      dashboardStatus.textContent =
+        "Admin identity verified. Checking database access...";
+
+      try {
+        await get(ref(db, "adminNote"));
+        dashboardStatus.textContent =
+          "Admin identity verified and database access confirmed.";
+      } catch (error) {
+        dashboardStatus.textContent =
+          "Admin identity verified, but database access is not configured. Check Firebase Database Rules.";
+      } finally {
+        checkingAccess = false;
+      }
+    });
+
+    document.getElementById("noteForm").addEventListener(
+      "submit",
+      async (event) => {
+        event.preventDefault();
+
+        const user = auth.currentUser;
+        if (!user || user.uid !== ADMIN_UID || checkingAccess) {
+          dashboardStatus.textContent = "Admin access is required.";
+          return;
+        }
+
+        const note = document.getElementById("note").value.trim();
+
+        if (!note) {
+          dashboardStatus.textContent = "Enter a note first.";
+          return;
+        }
+
+        try {
+          await set(ref(db, "adminNote"), {
+            text: note,
+            updatedAt: Date.now()
+          });
+
+          dashboardStatus.textContent = "Private note saved successfully.";
+        } catch (error) {
+          dashboardStatus.textContent =
+            "Could not save. Check your Firebase Database Rules.";
+        }
+      }
+    );
+
+    document.getElementById("loadNote").addEventListener(
+      "click",
+      async () => {
+        const user = auth.currentUser;
+
+        if (!user || user.uid !== ADMIN_UID) {
+          dashboardStatus.textContent = "Admin access is required.";
+          return;
+        }
+
+        try {
+          const snapshot = await get(ref(db, "adminNote"));
+
+          if (snapshot.exists()) {
+            document.getElementById("note").value =
+              snapshot.val().text || "";
+            dashboardStatus.textContent = "Saved note loaded.";
+          } else {
+            dashboardStatus.textContent = "No saved note exists yet.";
+          }
+        } catch (error) {
+          dashboardStatus.textContent =
+            "Could not load the note. Check your Database Rules.";
+        }
+      }
+    );
+
+    document.getElementById("logout").addEventListener(
+      "click",
+      async () => {
+        await signOut(auth);
+        showLogin("You have signed out.");
+      }
+    );
+  </script>
+</body>
+</html>
