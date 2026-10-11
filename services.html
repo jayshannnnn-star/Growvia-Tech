@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services | Growvia Tech</title>
+
     <style>
         * {
             margin: 0;
@@ -12,7 +13,9 @@
             box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -27,14 +30,22 @@
             padding: 22px 8%;
             background: #0c1d34;
             border-bottom: 1px solid #263a55;
+            gap: 20px;
         }
 
         .logo {
             font-size: 25px;
             font-weight: bold;
+            white-space: nowrap;
+            color: white;
+            text-decoration: none;
         }
 
-        .logo span { color: #4385ff; }
+        .logo span,
+        h1 span,
+        h2 span {
+            color: #4385ff;
+        }
 
         nav {
             display: flex;
@@ -48,7 +59,10 @@
             font-size: 14px;
         }
 
-        nav a:hover, nav a.active { color: #70a4ff; }
+        nav a:hover,
+        nav a.active {
+            color: #70a4ff;
+        }
 
         .hero {
             padding: 90px 8% 75px;
@@ -70,8 +84,6 @@
             margin-bottom: 20px;
         }
 
-        h1 span, h2 span { color: #4385ff; }
-
         .hero p {
             max-width: 650px;
             margin: auto;
@@ -83,6 +95,7 @@
             padding: 75px 8%;
             background: #f6f8fc;
             color: #10213a;
+            min-height: 350px;
         }
 
         .section-title {
@@ -111,6 +124,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 15px;
             transition: transform .2s, box-shadow .2s;
+            overflow-wrap: anywhere;
         }
 
         .service-card:hover {
@@ -140,20 +154,26 @@
             line-height: 1.8;
             color: #66758b;
             margin-bottom: 20px;
+            white-space: pre-wrap;
         }
 
         .service-card a {
+            display: inline-block;
             color: #3478f6;
             font-size: 13px;
             font-weight: bold;
             text-decoration: none;
         }
 
-        .note {
+        .service-card a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
             text-align: center;
             color: #66758b;
-            font-size: 12px;
-            margin-top: 30px;
+            line-height: 1.8;
+            padding: 35px 15px;
         }
 
         .contact {
@@ -184,6 +204,10 @@
             font-size: 14px;
         }
 
+        .button:hover {
+            background: #2465db;
+        }
+
         footer {
             padding: 24px 8%;
             display: flex;
@@ -206,18 +230,33 @@
                 gap: 18px;
             }
 
-            nav { justify-content: center; }
+            nav {
+                justify-content: center;
+            }
 
-            .service-grid { grid-template-columns: 1fr; }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
 
-            .section-title { font-size: 30px; }
+            .section-title {
+                font-size: 30px;
+            }
+
+            .hero {
+                padding: 65px 6%;
+            }
+
+            .services {
+                padding: 55px 6%;
+            }
         }
     </style>
 </head>
+
 <body>
 
 <header>
-    <a class="logo" href="index.html" style="color:white;text-decoration:none;">
+    <a class="logo" href="index.html">
         Growvia <span>Tech</span>
     </a>
 
@@ -233,117 +272,173 @@
 <main>
     <section class="hero">
         <div class="eyebrow">WHAT WE DO</div>
-        <h1>Digital Services for<br><span>Business Growth.</span></h1>
+
+        <h1>
+            Digital Services for<br>
+            <span>Business Growth.</span>
+        </h1>
+
         <p>
-            Discover digital solutions designed to help your business
-            communicate clearly, reach its audience, and build an online presence.
+            Explore the services available from Growvia Tech.
+            Our services listed below are managed through the Admin dashboard.
         </p>
     </section>
 
     <section class="services">
-        <h2 class="section-title">Our <span>Services</span></h2>
+        <h2 class="section-title">
+            Our <span>Services</span>
+        </h2>
+
         <p class="section-intro">
-            Choose the services that match your business needs.
-            Contact us to discuss your requirements.
+            Choose a service and contact us to discuss your requirements.
         </p>
 
-        <div class="service-grid">
-
-            <article class="service-card">
-                <div class="icon">⌘</div>
-                <h2 class="card-title">Website Development</h2>
-                <p>
-                    Responsive business websites that work across mobile phones,
-                    tablets, and desktop computers.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
-            <article class="service-card">
-                <div class="icon">◎</div>
-                <h2 class="card-title">Social Media Marketing</h2>
-                <p>
-                    Social media planning and content support to help communicate
-                    your business and its offerings.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
-            <article class="service-card">
-                <div class="icon">↗</div>
-                <h2 class="card-title">Digital Marketing</h2>
-                <p>
-                    Explore online marketing approaches based on your business
-                    goals, audience, and budget.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
-            <article class="service-card">
-                <div class="icon">⌕</div>
-                <h2 class="card-title">Search Engine Optimization</h2>
-                <p>
-                    Improve website structure and content so search engines can
-                    better understand your business pages.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
-            <article class="service-card">
-                <div class="icon">✦</div>
-                <h2 class="card-title">Brand Design</h2>
-                <p>
-                    Develop a consistent visual identity that helps your business
-                    present itself clearly and professionally.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
-            <article class="service-card">
-                <div class="icon">▣</div>
-                <h2 class="card-title">Business Landing Pages</h2>
-                <p>
-                    Focused web pages that explain a service and guide visitors
-                    toward contacting your business.
-                </p>
-                <a href="https://wa.me/917397166373" target="_blank"
-                   rel="noopener noreferrer">Discuss This Service ↗</a>
-            </article>
-
+        <div class="service-grid" id="servicesList">
+            <p class="message">Loading services...</p>
         </div>
-
-        <p class="note">
-            These are service descriptions, not claims of completed client work.
-        </p>
     </section>
 
     <section class="contact">
         <div class="eyebrow">READY TO GET STARTED?</div>
-        <h2>Let's Discuss <span>Your Goals.</span></h2>
-        <p>Tell us what your business needs and start a conversation.</p>
 
-        <a class="button"
-           href="https://wa.me/917397166373"
-           target="_blank"
-           rel="noopener noreferrer">
+        <h2>Let's Discuss <span>Your Goals.</span></h2>
+
+        <p>
+            Tell us what your business needs and start a conversation.
+        </p>
+
+        <a
+            class="button"
+            href="https://wa.me/917397166373"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             Contact Growvia Tech ↗
         </a>
     </section>
 </main>
 
 <footer>
-    <span>© <span id="year"></span> Growvia Tech. All rights reserved.</span>
+    <span>
+        © <span id="year"></span> Growvia Tech. All rights reserved.
+    </span>
+
     <a href="index.html">Back to Home</a>
 </footer>
 
-<script>
+<script type="module">
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+        getDatabase,
+        ref,
+        onValue
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAsX-WxUqkb4v_Ely1Z7CSFrMRnXphZ2qs",
+        authDomain: "growvia-tech.firebaseapp.com",
+        databaseURL: "https://growvia-tech-default-rtdb.firebaseio.com",
+        projectId: "growvia-tech",
+        storageBucket: "growvia-tech.firebasestorage.app",
+        messagingSenderId: "507702013919",
+        appId: "1:507702013919:web:d8b1904d53b56f16021e6a",
+        measurementId: "G-P4X4Z1S3LK"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const servicesList = document.getElementById("servicesList");
+
     document.getElementById("year").textContent =
         new Date().getFullYear();
+
+    function createServiceCard(service) {
+        const card = document.createElement("article");
+        card.className = "service-card";
+
+        const icon = document.createElement("div");
+        icon.className = "icon";
+        icon.textContent = service.icon || "✦";
+
+        const title = document.createElement("h2");
+        title.className = "card-title";
+        title.textContent = service.title;
+
+        const description = document.createElement("p");
+        description.textContent = service.description;
+
+        const link = document.createElement("a");
+        link.href =
+            "https://wa.me/917397166373?text=" +
+            encodeURIComponent(
+                "Hello Growvia Tech, I am interested in " +
+                service.title
+            );
+
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Discuss This Service ↗";
+
+        card.append(icon, title, description, link);
+
+        return card;
+    }
+
+    onValue(
+        ref(db, "services"),
+        (snapshot) => {
+            servicesList.replaceChildren();
+
+            if (!snapshot.exists()) {
+                const message = document.createElement("p");
+                message.className = "message";
+                message.textContent = "No services added yet.";
+                servicesList.appendChild(message);
+                return;
+            }
+
+            let count = 0;
+
+            snapshot.forEach((childSnapshot) => {
+                const service = childSnapshot.val();
+
+                if (
+                    service &&
+                    typeof service.title === "string" &&
+                    service.title.trim() &&
+                    typeof service.description === "string" &&
+                    service.description.trim()
+                ) {
+                    servicesList.appendChild(
+                        createServiceCard(service)
+                    );
+                    count++;
+                }
+            });
+
+            if (count === 0) {
+                const message = document.createElement("p");
+                message.className = "message";
+                message.textContent = "No services added yet.";
+                servicesList.appendChild(message);
+            }
+        },
+        (error) => {
+            console.error("Error loading services:", error);
+
+            servicesList.replaceChildren();
+
+            const message = document.createElement("p");
+            message.className = "message";
+            message.textContent =
+                "Services could not be loaded. Please try again later.";
+
+            servicesList.appendChild(message);
+        }
+    );
 </script>
 
 </body>
