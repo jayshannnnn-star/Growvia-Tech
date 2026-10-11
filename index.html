@@ -1,0 +1,453 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Growvia Tech - Digital Marketing and Website Development">
+    <title>Growvia Tech | Digital Agency</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #081629;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #0c1d34;
+            border-bottom: 1px solid #243650;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #4385ff;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #4385ff;
+        }
+
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 80px 8%;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1 1 350px;
+        }
+
+        .tag {
+            color: #70a4ff;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 22px;
+        }
+
+        h1 span,
+        h2 span {
+            color: #4385ff;
+        }
+
+        .hero p.description {
+            color: #b6c5d9;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 22px;
+            margin: 5px 8px 5px 0;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .primary {
+            background: #3478f6;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #60738c;
+            color: white;
+        }
+
+        .hero-card {
+            flex: 1 1 280px;
+            max-width: 420px;
+            min-height: 300px;
+            background: linear-gradient(145deg, #17365b, #10233e);
+            border: 1px solid #294a75;
+            border-radius: 24px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 25px 70px #00000030;
+        }
+
+        .hero-card .symbol {
+            font-size: 100px;
+            color: #6da2ff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-card h2 {
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .hero-card p {
+            color: #b6c5d9;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        section.content {
+            padding: 80px 8%;
+            background: white;
+            color: #12223a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #64748b;
+            text-align: center;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .service {
+            padding: 28px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            background: #ffffff;
+        }
+
+        .service .icon {
+            font-size: 35px;
+            color: #3478f6;
+            margin-bottom: 18px;
+        }
+
+        .service h3 {
+            margin-bottom: 13px;
+            font-size: 20px;
+        }
+
+        .service p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .about {
+            padding: 80px 8%;
+            background: #10233e;
+        }
+
+        .about h2,
+        .contact h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about p,
+        .contact p {
+            color: #c0cde0;
+            line-height: 1.9;
+            max-width: 700px;
+        }
+
+        .portfolio {
+            padding: 80px 8%;
+            background: #f5f8fc;
+            color: #12223a;
+            text-align: center;
+        }
+
+        .empty {
+            max-width: 650px;
+            margin: 30px auto 0;
+            padding: 35px;
+            border: 1px dashed #aab9cc;
+            border-radius: 12px;
+            background: white;
+        }
+
+        .empty p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        .contact {
+            padding: 80px 8%;
+            background: #081629;
+        }
+
+        .contact p {
+            margin-bottom: 25px;
+        }
+
+        footer {
+            padding: 25px 8%;
+            background: #050d19;
+            color: #a9b8cc;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #8db4ff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero {
+                padding-top: 55px;
+                padding-bottom: 55px;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 31px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Growvia <span>Tech</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">DIGITAL GROWTH STARTS HERE</div>
+
+            <h1>
+                Build Your Brand.<br>
+                <span>Grow Your Business.</span>
+            </h1>
+
+            <p class="description">
+                We help businesses build a stronger online presence
+                with website development and digital marketing solutions.
+            </p>
+
+            <a class="button primary"
+               href="https://wa.me/917397166373"
+               target="_blank"
+               rel="noopener noreferrer">
+                Contact Us ↗
+            </a>
+
+            <a class="button secondary" href="#services">
+                Explore Services
+            </a>
+        </div>
+
+        <div class="hero-card">
+            <div class="symbol">↗</div>
+            <h2>Your Growth Journey</h2>
+            <p>
+                Creative thinking. Digital solutions.
+                A stronger online presence.
+            </p>
+        </div>
+    </section>
+
+    <section class="content" id="services">
+        <h2 class="section-title">
+            Our <span>Services</span>
+        </h2>
+
+        <p class="section-description">
+            Digital solutions to help your business take the next step online.
+        </p>
+
+        <div class="services">
+            <article class="service">
+                <div class="icon">⌘</div>
+                <h3>Website Development</h3>
+                <p>
+                    Responsive websites designed to present your business
+                    professionally on mobile phones and computers.
+                </p>
+            </article>
+
+            <article class="service">
+                <div class="icon">◎</div>
+                <h3>Social Media Marketing</h3>
+                <p>
+                    Build a consistent social media presence and communicate
+                    your brand's value to your audience.
+                </p>
+            </article>
+
+            <article class="service">
+                <div class="icon">↗</div>
+                <h3>Digital Marketing</h3>
+                <p>
+                    Explore online marketing strategies that match your
+                    business goals and target audience.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="tag">ABOUT GROWVIA TECH</div>
+
+        <h2>A Digital Partner<br>For Your <span>Ambitions.</span></h2>
+
+        <p>
+            Growvia Tech focuses on helping businesses explore digital tools,
+            communicate their value, and build their online presence.
+            Our goal is to understand your business and help you plan your
+            next digital step.
+        </p>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Our <span>Portfolio</span></h2>
+
+        <p class="section-description">
+            Explore our completed work as genuine projects are added.
+        </p>
+
+        <div class="empty">
+            <h3>No projects added yet</h3>
+            <p>
+                Real project details will appear here when they are available.
+                No fake client projects are displayed.
+            </p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="tag">LET'S CONNECT</div>
+
+        <h2>Let's Talk About<br><span>Your Business.</span></h2>
+
+        <p>
+            Have a business idea or need digital services?
+            Contact Growvia Tech to start a conversation.
+        </p>
+
+        <a class="button primary"
+           href="https://wa.me/917397166373"
+           target="_blank"
+           rel="noopener noreferrer">
+            Message Us on WhatsApp ↗
+        </a>
+
+        <a class="button secondary" href="tel:+917397166373">
+            Call Us
+        </a>
+    </section>
+</main>
+
+<footer>
+    <span>© <span id="year"></span> Growvia Tech. All rights reserved.</span>
+    <a href="#home">Back to Top ↑</a>
+</footer>
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
+```
